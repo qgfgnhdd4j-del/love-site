@@ -1,0 +1,129 @@
+<!DOCTYPE html>
+<html lang="ar">
+<head>
+<meta charset="UTF-8">
+<title>Love Video</title>
+
+<style>
+body{
+margin:0;
+background:black;
+overflow:hidden;
+font-family:Arial;
+}
+
+/* الصور */
+.slide{
+position:absolute;
+width:100%;
+height:100vh;
+object-fit:cover;
+opacity:0;
+transition:1s ease-in-out;
+}
+
+.active{
+opacity:1;
+}
+
+/* طبقة غامقة خفيفة */
+.overlay{
+position:absolute;
+width:100%;
+height:100%;
+background:linear-gradient(to top, rgba(0,0,0,0.7), transparent);
+}
+
+/* الكلام الأساسي */
+.text{
+position:absolute;
+bottom:140px;
+width:100%;
+text-align:center;
+color:white;
+font-size:20px;
+font-weight:bold;
+padding:0 15px;
+line-height:1.5;
+}
+
+/* التاريخ */
+.date{
+position:absolute;
+bottom:90px;
+width:100%;
+text-align:center;
+color:#ff4d6d;
+font-size:16px;
+}
+
+/* الكلام الصغير */
+.text-small{
+position:absolute;
+bottom:50px;
+width:100%;
+text-align:center;
+color:white;
+font-size:14px;
+opacity:0.9;
+padding:0 15px;
+}
+
+/* زرار تشغيل */
+.play-btn{
+position:absolute;
+top:20px;
+right:20px;
+background:rgba(0,0,0,0.5);
+color:white;
+border:none;
+padding:10px 15px;
+border-radius:10px;
+font-size:14px;
+}
+</style>
+</head>
+
+<body>
+
+<div class="overlay"></div>
+
+<img src="img1.JPG" class="slide active">
+<img src="img2.JPG" class="slide">
+<img src="img3.JPG" class="slide">
+
+<div class="text">
+❤️ انهردا ٢٨ / ٤ ده احلا يوم ف حياتي عشان كملت معاكي سنه ي احلي مريومه ❤️
+</div>
+
+<div class="date">
+28 / 04 / 2025
+</div>
+
+<div class="text-small">
+ده نفس اليوم اللي اعترفنا فيه بحبنا لبعض وكان اول مقابله ❤️
+</div>
+
+<button class="play-btn" onclick="playMusic()">تشغيل 🎵</button>
+
+<audio id="music" loop>
+<source src="song.mp3.m4a">
+</audio>
+
+<script>
+let slides=document.querySelectorAll(".slide");
+let i=0;
+
+setInterval(()=>{
+slides[i].classList.remove("active");
+i=(i+1)%slides.length;
+slides[i].classList.add("active");
+},3000);
+
+function playMusic(){
+document.getElementById("music").play();
+}
+</script>
+
+</body>
+</html>
